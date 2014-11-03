@@ -8,3 +8,13 @@ C:\Users\eahscs\Documents\Visual Studio 2010\Projects\BugSmasher\BugSmasher\BugS
 C:\Users\eahscs\Documents\Visual Studio 2010\Projects\BugSmasher\BugSmasher\BugSmasher\bin\x86\Debug\Content\buttons.xnb
 C:\Users\eahscs\Documents\Visual Studio 2010\Projects\BugSmasher\BugSmasher\BugSmasher\bin\x86\Debug\Content\spritesheet.xnb
 C:\Users\eahscs\Documents\Visual Studio 2010\Projects\BugSmasher\BugSmasher\BugSmasher\bin\x86\Debug\Content\windows.xnb
+C:\Users\Rueben\Documents\GitHub\BugSmasher\BugSmasher\BugSmasher\BugSmasher\bin\x86\Debug\Content\background.xnb
+C:\Users\Rueben\Documents\GitHub\BugSmasher\BugSmasher\BugSmasher\BugSmasher\bin\x86\Debug\Content\buttons.xnb
+C:\Users\Rueben\Documents\GitHub\BugSmasher\BugSmasher\BugSmasher\BugSmasher\bin\x86\Debug\Content\spritesheet.xnb
+C:\Users\Rueben\Documents\GitHub\BugSmasher\BugSmasher\BugSmasher\BugSmasher\bin\x86\Debug\Content\windows.xnb
+C:\Users\Rueben\Documents\GitHub\BugSmasher\BugSmasher\BugSmasher\BugSmasher\bin\x86\Debug\BugSmasher.exe
+C:\Users\Rueben\Documents\GitHub\BugSmasher\BugSmasher\BugSmasher\BugSmasher\bin\x86\Debug\BugSmasher.pdb
+C:\Users\Rueben\Documents\GitHub\BugSmasher\BugSmasher\BugSmasher\BugSmasher\obj\x86\Debug\BugSmasher.csprojResolveAssemblyReference.cache
+C:\Users\Rueben\Documents\GitHub\BugSmasher\BugSmasher\BugSmasher\BugSmasher\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+C:\Users\Rueben\Documents\GitHub\BugSmasher\BugSmasher\BugSmasher\BugSmasher\obj\x86\Debug\BugSmasher.exe
+C:\Users\Rueben\Documents\GitHub\BugSmasher\BugSmasher\BugSmasher\BugSmasher\obj\x86\Debug\BugSmasher.pdb

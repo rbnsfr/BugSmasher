@@ -20,6 +20,8 @@ namespace BugSmasher
         SpriteBatch spriteBatch;
         Texture2D spritesheet, windows, buttons, background;
         Sprite hand;
+        Rectangle rec;
+        List<Sprite> bugs = new List<Sprite>();
 
         public Game1()
         {
@@ -59,7 +61,11 @@ namespace BugSmasher
             buttons = Content.Load<Texture2D>("buttons");
             background = Content.Load<Texture2D>("background");
 
-            hand = new Sprite(Vector2.Zero, spritesheet, new Rectangle(135, 199, 48, 52), Vector2.Zero);
+            Random a = new Random();
+            int ai = a.Next(0, this.Window.ClientBounds.Height - 64);
+
+            hand = new Sprite(Vector2.Zero, spritesheet, new Rectangle(135, 197, 48, 52), Vector2.Zero);
+            SpawnBug(new Vector2(0, ai), new Vector2(100, 0));
         }
 
         /// <summary>
@@ -69,6 +75,35 @@ namespace BugSmasher
         protected override void UnloadContent()
         {
             // TODO: Unload any non ContentManager content here
+        }
+
+        public void SpawnBug(Vector2 location, Vector2 velocity)
+        {
+            Random tokyo = new Random();
+            int tokyoi = tokyo.Next(0, 6);
+            switch (tokyoi)
+            {
+                case 0:
+                    rec = new Rectangle(0, 0, 64, 64);
+                    break;
+                case 1:
+                    rec = new Rectangle(64, 0, 64, 64);
+                    break;
+                case 2:
+                    rec = new Rectangle(128, 0, 64, 64);
+                    break;
+                case 3:
+                    rec = new Rectangle(0, 64, 64, 64);
+                    break;
+                case 4:
+                    rec = new Rectangle(64, 64, 64, 64);
+                    break;
+                case 5:
+                    rec = new Rectangle(128, 64, 64, 64);
+                    break;
+            }
+            Sprite bug = new Sprite(location, spritesheet, rec, velocity);
+            bugs.Add(bug);
         }
 
         /// <summary>
@@ -87,6 +122,31 @@ namespace BugSmasher
             // TODO: Add your update logic here
             hand.Location = new Vector2(ms.X, ms.Y);
 
+            for (int i = 0; i < bugs.Count; i++)
+            {
+                // Bug logic goes here...
+                // bugs[i].FlipHorizontal = false;
+
+                bugs[i].Update(gameTime);
+
+                if (bugs[i].BoundingBoxRect.Contains(ms.X, ms.Y) && ms.LeftButton == ButtonState.Pressed)
+                {
+                    bugs.RemoveAt(i); // placeholder for splat code
+
+                    Random a = new Random();
+                    int ai = a.Next(0, Window.ClientBounds.Height - 64);
+
+                    SpawnBug(new Vector2(0, ai), new Vector2(100, 0));
+                    SpawnBug(new Vector2(0, ai), new Vector2(100, 0));
+                }
+
+                if (gameTime.IsRunningSlowly)
+                {
+                    if (bugs.Count > 1)
+                        bugs.RemoveAt(i);
+                }
+            }
+
             base.Update(gameTime);
         }
 
@@ -96,12 +156,17 @@ namespace BugSmasher
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
+            GraphicsDevice.Clear(Color.DarkRed);
 
             // TODO: Add your drawing code here
             spriteBatch.Begin();
             spriteBatch.Draw(background, Vector2.Zero, Color.White);
+
+            for (int i = 0; i < bugs.Count; i++)
+                bugs[i].Draw(spriteBatch);
+
             hand.Draw(spriteBatch);
+
             spriteBatch.End();
 
             base.Draw(gameTime);
