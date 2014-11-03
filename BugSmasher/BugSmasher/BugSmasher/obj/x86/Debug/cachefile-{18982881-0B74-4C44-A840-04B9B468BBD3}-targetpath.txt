@@ -1,0 +1,4 @@
+Content\background.xnb
+Content\buttons.xnb
+Content\spritesheet.xnb
+Content\windows.xnb
