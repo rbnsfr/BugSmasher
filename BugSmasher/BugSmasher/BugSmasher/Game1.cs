@@ -22,14 +22,17 @@ namespace BugSmasher
         Sprite hand;
         Rectangle rec;
         List<Sprite> bugs = new List<Sprite>();
+        Song music;
+        int mood = 0; // 0 = normal, 1 = relaxed, 2 = angry, 3 = intrigued
 
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
 
-            graphics.PreferredBackBufferWidth = 800;
-            graphics.PreferredBackBufferHeight = 480;
+            graphics.PreferredBackBufferWidth = 1920;
+            graphics.PreferredBackBufferHeight = 1024;
+            graphics.IsFullScreen = true;
         }
 
         /// <summary>
@@ -59,13 +62,15 @@ namespace BugSmasher
             spritesheet = Content.Load<Texture2D>("spritesheet");
             windows = Content.Load<Texture2D>("windows");
             buttons = Content.Load<Texture2D>("buttons");
-            background = Content.Load<Texture2D>("background");
+            background = Content.Load<Texture2D>("background-mac");
+            music = Content.Load<Song>("music");
+            MediaPlayer.Play(music);
 
             Random a = new Random();
             int ai = a.Next(0, this.Window.ClientBounds.Height - 64);
 
             hand = new Sprite(Vector2.Zero, spritesheet, new Rectangle(135, 197, 48, 52), Vector2.Zero);
-            SpawnBug(new Vector2(0, ai), new Vector2(100, 0));
+            SpawnBug(new Vector2(0, ai), new Vector2(150, 50));
         }
 
         /// <summary>
@@ -118,6 +123,7 @@ namespace BugSmasher
                 this.Exit();
 
             MouseState ms = Mouse.GetState();
+            KeyboardState ks = Keyboard.GetState();
 
             // TODO: Add your update logic here
             hand.Location = new Vector2(ms.X, ms.Y);
@@ -136,8 +142,8 @@ namespace BugSmasher
                     Random a = new Random();
                     int ai = a.Next(0, Window.ClientBounds.Height - 64);
 
-                    SpawnBug(new Vector2(0, ai), new Vector2(100, 0));
-                    SpawnBug(new Vector2(0, ai), new Vector2(100, 0));
+                    SpawnBug(new Vector2(0, ai), new Vector2(150, -50));
+                    SpawnBug(new Vector2(0, ai), new Vector2(150, 50));
                 }
 
                 if (gameTime.IsRunningSlowly)
