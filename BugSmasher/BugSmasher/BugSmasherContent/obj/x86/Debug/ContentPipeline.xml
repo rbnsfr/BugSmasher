@@ -8,7 +8,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Eahscs\Documents\GitHub\BugSmasher\BugSmasher\BugSmasher\BugSmasher\bin\x86\Debug\Content\background.xnb</Output>
-      <Time>2014-11-04T08:02:09.8668-05:00</Time>
+      <Time>2014-11-05T07:54:00.7768-05:00</Time>
     </Item>
     <Item>
       <Source>buttons.png</Source>
@@ -17,7 +17,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Eahscs\Documents\GitHub\BugSmasher\BugSmasher\BugSmasher\BugSmasher\bin\x86\Debug\Content\buttons.xnb</Output>
-      <Time>2014-11-04T08:02:09.9978-05:00</Time>
+      <Time>2014-11-05T07:54:00.8248-05:00</Time>
     </Item>
     <Item>
       <Source>spritesheet.png</Source>
@@ -26,7 +26,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Eahscs\Documents\GitHub\BugSmasher\BugSmasher\BugSmasher\BugSmasher\bin\x86\Debug\Content\spritesheet.xnb</Output>
-      <Time>2014-11-04T08:02:10.1658-05:00</Time>
+      <Time>2014-11-05T07:54:00.8738-05:00</Time>
     </Item>
     <Item>
       <Source>windows.png</Source>
@@ -35,7 +35,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Eahscs\Documents\GitHub\BugSmasher\BugSmasher\BugSmasher\BugSmasher\bin\x86\Debug\Content\windows.xnb</Output>
-      <Time>2014-11-04T08:02:10.1768-05:00</Time>
+      <Time>2014-11-05T07:54:00.8788-05:00</Time>
     </Item>
     <Item>
       <Source>music.mp3</Source>
@@ -45,7 +45,7 @@
       <Options>None</Options>
       <Output>C:\Users\Eahscs\Documents\GitHub\BugSmasher\BugSmasher\BugSmasher\BugSmasher\bin\x86\Debug\Content\music.xnb</Output>
       <Extra>C:\Users\Eahscs\Documents\GitHub\BugSmasher\BugSmasher\BugSmasher\BugSmasher\bin\x86\Debug\Content\music.wma</Extra>
-      <Time>2014-11-04T08:22:46.4938-05:00</Time>
+      <Time>2014-11-05T07:54:00.8678-05:00</Time>
     </Item>
     <Item>
       <Source>background-mac.png</Source>
@@ -54,7 +54,26 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Eahscs\Documents\GitHub\BugSmasher\BugSmasher\BugSmasher\BugSmasher\bin\x86\Debug\Content\background-mac.xnb</Output>
-      <Time>2014-11-04T08:38:21.6228-05:00</Time>
+      <Time>2014-11-05T07:54:00.7688-05:00</Time>
+    </Item>
+    <Item>
+      <Source>background-snoop.png</Source>
+      <Name>background-snoop</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\EAHSCS\Documents\GitHub\BugSmasher\BugSmasher\BugSmasher\BugSmasher\bin\x86\Debug\Content\background-snoop.xnb</Output>
+      <Time>2014-11-05T08:08:37.9238-05:00</Time>
+    </Item>
+    <Item>
+      <Source>snoop-mode.mp3</Source>
+      <Name>snoop-mode</Name>
+      <Importer>Mp3Importer</Importer>
+      <Processor>SongProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\EAHSCS\Documents\GitHub\BugSmasher\BugSmasher\BugSmasher\BugSmasher\bin\x86\Debug\Content\snoop-mode.xnb</Output>
+      <Extra>C:\Users\EAHSCS\Documents\GitHub\BugSmasher\BugSmasher\BugSmasher\BugSmasher\bin\x86\Debug\Content\snoop-mode.wma</Extra>
+      <Time>2014-11-05T08:13:01.9548-05:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
@@ -62,10 +81,10 @@
       <TargetProfile>HiDef</TargetProfile>
       <BuildConfiguration>Debug</BuildConfiguration>
       <CompressContent>false</CompressContent>
-      <RootDirectory>C:\Users\Eahscs\Documents\GitHub\BugSmasher\BugSmasher\BugSmasher\BugSmasherContent\</RootDirectory>
-      <LoggerRootDirectory>C:\Users\Eahscs\Documents\GitHub\BugSmasher\BugSmasher\BugSmasher\BugSmasher\</LoggerRootDirectory>
-      <IntermediateDirectory>C:\Users\Eahscs\Documents\GitHub\BugSmasher\BugSmasher\BugSmasher\BugSmasherContent\obj\x86\Debug\</IntermediateDirectory>
-      <OutputDirectory>C:\Users\Eahscs\Documents\GitHub\BugSmasher\BugSmasher\BugSmasher\BugSmasher\bin\x86\Debug\Content\</OutputDirectory>
+      <RootDirectory>C:\Users\EAHSCS\Documents\GitHub\BugSmasher\BugSmasher\BugSmasher\BugSmasherContent\</RootDirectory>
+      <LoggerRootDirectory>C:\Users\EAHSCS\Documents\GitHub\BugSmasher\BugSmasher\BugSmasher\BugSmasher\</LoggerRootDirectory>
+      <IntermediateDirectory>C:\Users\EAHSCS\Documents\GitHub\BugSmasher\BugSmasher\BugSmasher\BugSmasherContent\obj\x86\Debug\</IntermediateDirectory>
+      <OutputDirectory>C:\Users\EAHSCS\Documents\GitHub\BugSmasher\BugSmasher\BugSmasher\BugSmasher\bin\x86\Debug\Content\</OutputDirectory>
     </Settings>
     <Assemblies>
       <Assembly>

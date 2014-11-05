@@ -18,12 +18,15 @@ namespace BugSmasher
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
-        Texture2D spritesheet, windows, buttons, background;
-        Sprite hand;
+        Texture2D spritesheet, windows, buttons, background, snoopback;
+        Sprite hand, splat;
         Rectangle rec;
         List<Sprite> bugs = new List<Sprite>();
-        Song music;
+        Song music, snoopmusic;
+        KeyboardState oldks;
         int mood = 0; // 0 = normal, 1 = relaxed, 2 = angry, 3 = intrigued
+        int gamestate = 0; // 0 = normal, 1 = paused, 2 = menu
+        bool snoopmode = false;
 
         public Game1()
         {
@@ -44,7 +47,7 @@ namespace BugSmasher
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-            Window.Title = "Super Smash Bugs";
+            Window.Title = "Debuggers";
 
             base.Initialize();
         }
@@ -63,13 +66,14 @@ namespace BugSmasher
             windows = Content.Load<Texture2D>("windows");
             buttons = Content.Load<Texture2D>("buttons");
             background = Content.Load<Texture2D>("background-mac");
+            snoopback = Content.Load<Texture2D>("background-snoop");
             music = Content.Load<Song>("music");
-            MediaPlayer.Play(music);
 
             Random a = new Random();
             int ai = a.Next(0, this.Window.ClientBounds.Height - 64);
 
             hand = new Sprite(Vector2.Zero, spritesheet, new Rectangle(135, 197, 48, 52), Vector2.Zero);
+            //splat = new Sprite(splatloc, spritesheet, new Rectangle(0, 132, 128, 128), Vector2.Zero);
             SpawnBug(new Vector2(0, ai), new Vector2(150, 50));
         }
 
@@ -142,15 +146,36 @@ namespace BugSmasher
                     Random a = new Random();
                     int ai = a.Next(0, Window.ClientBounds.Height - 64);
 
-                    SpawnBug(new Vector2(0, ai), new Vector2(150, -50));
-                    SpawnBug(new Vector2(0, ai), new Vector2(150, 50));
+                    Random dirx = new Random();
+                    int dirxi = dirx.Next(50, 200);
+                    Random diry = new Random();
+                    int diryi = diry.Next(-60, 60);
+
+                    SpawnBug(new Vector2(0, ai), new Vector2(dirxi, diryi));
+                    SpawnBug(new Vector2(0, ai), new Vector2(dirxi, diryi));
                 }
 
-                if (gameTime.IsRunningSlowly)
+                /*if (gameTime.IsRunningSlowly)
                 {
                     if (bugs.Count > 1)
                         bugs.RemoveAt(i);
-                }
+                }*/
+
+                if (snoopmode) { bugs[i].TintColor = Color.LawnGreen; bugs[i].Velocity = new Vector2(50, 25); hand.TintColor = Color.LawnGreen; }
+                else { bugs[i].TintColor = Color.White; hand.TintColor = Color.White; }
+            }
+
+            if (!oldks.IsKeyDown(Keys.Space) && ks.IsKeyDown(Keys.Space) && snoopmode == false)
+            {
+                snoopmode = true;
+                snoopmusic = Content.Load<Song>("snoop-mode");
+                MediaPlayer.Play(snoopmusic);
+            }
+            else if (!oldks.IsKeyDown(Keys.Space) && ks.IsKeyDown(Keys.Space) && snoopmode)
+            {
+                snoopmode = false;
+                music = Content.Load<Song>("music");
+                MediaPlayer.Play(music);
             }
 
             base.Update(gameTime);
@@ -166,10 +191,18 @@ namespace BugSmasher
 
             // TODO: Add your drawing code here
             spriteBatch.Begin();
-            spriteBatch.Draw(background, Vector2.Zero, Color.White);
+            if (snoopmode == false) spriteBatch.Draw(background, Vector2.Zero, Color.White);
+            else spriteBatch.Draw(snoopback, Vector2.Zero, Color.White);
 
             for (int i = 0; i < bugs.Count; i++)
+            {
                 bugs[i].Draw(spriteBatch);
+
+                MouseState ms = Mouse.GetState();
+
+                /*if (bugs[i].BoundingBoxRect.Contains(ms.X, ms.Y) && ms.LeftButton == ButtonState.Pressed)
+                    spriteBatchDraw(splat, bugs[i].Location, Color.White);*/
+            }
 
             hand.Draw(spriteBatch);
 

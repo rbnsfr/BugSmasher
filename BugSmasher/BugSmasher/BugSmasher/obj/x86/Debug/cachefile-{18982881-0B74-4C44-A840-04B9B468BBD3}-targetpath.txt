@@ -5,3 +5,6 @@ Content\windows.xnb
 Content\music.xnb
 Content\music.wma
 Content\background-mac.xnb
+Content\background-snoop.xnb
+Content\snoop-mode.xnb
+Content\snoop-mode.wma
