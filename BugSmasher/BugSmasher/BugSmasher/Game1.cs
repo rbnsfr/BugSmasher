@@ -21,7 +21,7 @@ namespace BugSmasher
         Texture2D spritesheet, windows, buttons, background, snoopback;
         Sprite hand, splat;
         Rectangle rec;
-        List<Sprite> bugs = new List<Sprite>();
+        List<Bug> bugs = new List<Bug>();
         Song music, snoopmusic;
         KeyboardState oldks;
         int mood = 0; // 0 = normal, 1 = relaxed, 2 = angry, 3 = intrigued
@@ -111,7 +111,7 @@ namespace BugSmasher
                     rec = new Rectangle(128, 64, 64, 64);
                     break;
             }
-            Sprite bug = new Sprite(location, spritesheet, rec, velocity);
+            Bug bug = new Bug(location, spritesheet, rec, velocity);
             bugs.Add(bug);
         }
 
@@ -132,16 +132,22 @@ namespace BugSmasher
             // TODO: Add your update logic here
             hand.Location = new Vector2(ms.X, ms.Y);
 
+            Vector2 target = Vector2.Zero;
+            
+            if (ms.LeftButton == ButtonState.Pressed)
+                target = new Vector2(ms.X, ms.Y);
+
             for (int i = 0; i < bugs.Count; i++)
             {
                 // Bug logic goes here...
                 // bugs[i].FlipHorizontal = false;
 
                 bugs[i].Update(gameTime);
+                bugs[i].Target = target;
 
                 if (bugs[i].BoundingBoxRect.Contains(ms.X, ms.Y) && ms.LeftButton == ButtonState.Pressed)
                 {
-                    bugs.RemoveAt(i); // placeholder for splat code
+
 
                     Random a = new Random();
                     int ai = a.Next(0, Window.ClientBounds.Height - 64);
@@ -153,6 +159,9 @@ namespace BugSmasher
 
                     SpawnBug(new Vector2(0, ai), new Vector2(dirxi, diryi));
                     SpawnBug(new Vector2(0, ai), new Vector2(dirxi, diryi));
+
+                    bugs.RemoveAt(i); // placeholder for splat code
+                    continue;
                 }
 
                 /*if (gameTime.IsRunningSlowly)
@@ -161,8 +170,8 @@ namespace BugSmasher
                         bugs.RemoveAt(i);
                 }*/
 
-                if (snoopmode) { bugs[i].TintColor = Color.LawnGreen; bugs[i].Velocity = new Vector2(50, 25); hand.TintColor = Color.LawnGreen; }
-                else { bugs[i].TintColor = Color.White; hand.TintColor = Color.White; }
+                if (snoopmode) { bugs[i].TintColor = Color.LawnGreen; bugs[i].Velocity /= 2; hand.TintColor = Color.LawnGreen; }
+                else { bugs[i].TintColor = Color.White; bugs[i].Velocity *= 2; hand.TintColor = Color.White; }
             }
 
             if (!oldks.IsKeyDown(Keys.Space) && ks.IsKeyDown(Keys.Space) && snoopmode == false)
