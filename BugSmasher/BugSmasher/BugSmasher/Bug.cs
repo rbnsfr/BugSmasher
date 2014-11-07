@@ -17,7 +17,8 @@ namespace BugSmasher
             Vector2 location,
             Texture2D texture,
             Rectangle initialFrame,
-            Vector2 velocity) : base (location, texture, initialFrame, velocity)
+            Vector2 velocity)
+            : base(location, texture, initialFrame, velocity)
         {
             Target = Vector2.Zero;
         }
@@ -29,7 +30,6 @@ namespace BugSmasher
                 Vector2 vel = Target - Center;
                 vel.Normalize();
                 vel *= 100;
-
                 Velocity = vel;
                 Rotation = (float)Math.Atan2(vel.Y, vel.X);
             }

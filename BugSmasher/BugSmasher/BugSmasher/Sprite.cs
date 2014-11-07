@@ -25,6 +25,7 @@ namespace BugSmasher
         public int CollisionRadius = 0;
         public int BoundingXPadding = 0;
         public int BoundingYPadding = 0;
+        public float RelativeSize = 1;
 
         public object tag;
 
@@ -182,7 +183,7 @@ namespace BugSmasher
                 tintColor,
                 rotation,
                 origin,
-                1.0f,
+                RelativeSize,
                 this.FlipHorizontal ? SpriteEffects.FlipHorizontally : SpriteEffects.None,
                 0.0f);
         }

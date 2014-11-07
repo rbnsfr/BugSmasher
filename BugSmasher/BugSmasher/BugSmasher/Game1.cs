@@ -19,7 +19,7 @@ namespace BugSmasher
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         Texture2D spritesheet, windows, buttons, background, snoopback;
-        Sprite hand, splat;
+        Sprite hand, splat, selectionwindow;
         Rectangle rec;
         List<Bug> bugs = new List<Bug>();
         Song music, snoopmusic;
@@ -74,7 +74,8 @@ namespace BugSmasher
 
             hand = new Sprite(Vector2.Zero, spritesheet, new Rectangle(135, 197, 48, 52), Vector2.Zero);
             //splat = new Sprite(splatloc, spritesheet, new Rectangle(0, 132, 128, 128), Vector2.Zero);
-            SpawnBug(new Vector2(0, ai), new Vector2(150, 50));
+            selectionwindow = new Sprite(new Vector2(Window.ClientBounds.Width - 600, Window.ClientBounds.Height - 300), windows, new Rectangle(64, 41, 778, 377), Vector2.Zero);
+            SpawnBug(new Vector2(0, ai), new Vector2(100, 0));
         }
 
         /// <summary>
@@ -133,7 +134,7 @@ namespace BugSmasher
             hand.Location = new Vector2(ms.X, ms.Y);
 
             Vector2 target = Vector2.Zero;
-            
+
             if (ms.LeftButton == ButtonState.Pressed)
                 target = new Vector2(ms.X, ms.Y);
 
@@ -142,13 +143,30 @@ namespace BugSmasher
                 // Bug logic goes here...
                 // bugs[i].FlipHorizontal = false;
 
+                if (!oldks.IsKeyDown(Keys.Space) && ks.IsKeyDown(Keys.Space) && snoopmode == false)
+                {
+                    snoopmode = true;
+                    bugs[i].TintColor = Color.LawnGreen;
+                    bugs[i].Velocity /= 2;
+                    hand.TintColor = Color.LawnGreen;
+                    snoopmusic = Content.Load<Song>("snoop-mode");
+                    MediaPlayer.Play(snoopmusic);
+                }
+                else if (!oldks.IsKeyDown(Keys.Space) && ks.IsKeyDown(Keys.Space) && snoopmode)
+                {
+                    snoopmode = false;
+                    bugs[i].TintColor = Color.White;
+                    bugs[i].Velocity *= 2;
+                    hand.TintColor = Color.White;
+                    music = Content.Load<Song>("music");
+                    MediaPlayer.Play(music);
+                }
+
                 bugs[i].Update(gameTime);
                 bugs[i].Target = target;
 
                 if (bugs[i].BoundingBoxRect.Contains(ms.X, ms.Y) && ms.LeftButton == ButtonState.Pressed)
                 {
-
-
                     Random a = new Random();
                     int ai = a.Next(0, Window.ClientBounds.Height - 64);
 
@@ -169,22 +187,6 @@ namespace BugSmasher
                     if (bugs.Count > 1)
                         bugs.RemoveAt(i);
                 }*/
-
-                if (snoopmode) { bugs[i].TintColor = Color.LawnGreen; bugs[i].Velocity /= 2; hand.TintColor = Color.LawnGreen; }
-                else { bugs[i].TintColor = Color.White; bugs[i].Velocity *= 2; hand.TintColor = Color.White; }
-            }
-
-            if (!oldks.IsKeyDown(Keys.Space) && ks.IsKeyDown(Keys.Space) && snoopmode == false)
-            {
-                snoopmode = true;
-                snoopmusic = Content.Load<Song>("snoop-mode");
-                MediaPlayer.Play(snoopmusic);
-            }
-            else if (!oldks.IsKeyDown(Keys.Space) && ks.IsKeyDown(Keys.Space) && snoopmode)
-            {
-                snoopmode = false;
-                music = Content.Load<Song>("music");
-                MediaPlayer.Play(music);
             }
 
             base.Update(gameTime);
@@ -212,7 +214,8 @@ namespace BugSmasher
                 /*if (bugs[i].BoundingBoxRect.Contains(ms.X, ms.Y) && ms.LeftButton == ButtonState.Pressed)
                     spriteBatchDraw(splat, bugs[i].Location, Color.White);*/
             }
-
+            selectionwindow.RelativeSize = 0.5f;
+            selectionwindow.Draw(spriteBatch);
             hand.Draw(spriteBatch);
 
             spriteBatch.End();
