@@ -19,11 +19,12 @@ namespace BugSmasher
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         Texture2D spritesheet, windows, buttons, background, snoopback;
-        Sprite hand, splat, selectionwindow;
+        Sprite hand, splat, selectionwindow, icecream, pizza, milkshake;
         Rectangle rec;
         List<Bug> bugs = new List<Bug>();
         Song music, snoopmusic;
         KeyboardState oldks;
+        Vector2 splatloc;
         int mood = 0; // 0 = normal, 1 = relaxed, 2 = angry, 3 = intrigued
         int gamestate = 0; // 0 = normal, 1 = paused, 2 = menu
         bool snoopmode = false;
@@ -35,7 +36,7 @@ namespace BugSmasher
 
             graphics.PreferredBackBufferWidth = 1920;
             graphics.PreferredBackBufferHeight = 1024;
-            graphics.IsFullScreen = true;
+            //graphics.IsFullScreen = true;
         }
 
         /// <summary>
@@ -68,13 +69,15 @@ namespace BugSmasher
             background = Content.Load<Texture2D>("background-mac");
             snoopback = Content.Load<Texture2D>("background-snoop");
             music = Content.Load<Song>("music");
+            MediaPlayer.Play(music);
 
             Random a = new Random();
             int ai = a.Next(0, this.Window.ClientBounds.Height - 64);
 
             hand = new Sprite(Vector2.Zero, spritesheet, new Rectangle(135, 197, 48, 52), Vector2.Zero);
-            //splat = new Sprite(splatloc, spritesheet, new Rectangle(0, 132, 128, 128), Vector2.Zero);
+            splat = new Sprite(splatloc, spritesheet, new Rectangle(0, 132, 128, 128), Vector2.Zero);
             selectionwindow = new Sprite(new Vector2(Window.ClientBounds.Width - 600, Window.ClientBounds.Height - 300), windows, new Rectangle(64, 41, 778, 377), Vector2.Zero);
+            icecream = new Sprite(selectionwindow.Center, spritesheet, new Rectangle(0, 259, 32, 37), Vector2.Zero);
             SpawnBug(new Vector2(0, ai), new Vector2(100, 0));
         }
 
@@ -142,6 +145,10 @@ namespace BugSmasher
             {
                 // Bug logic goes here...
                 // bugs[i].FlipHorizontal = false;
+                Random dirx = new Random();
+                int dirxi = dirx.Next(50, 200);
+                Random diry = new Random();
+                int diryi = diry.Next(-60, 60);
 
                 if (!oldks.IsKeyDown(Keys.Space) && ks.IsKeyDown(Keys.Space) && snoopmode == false)
                 {
@@ -165,15 +172,13 @@ namespace BugSmasher
                 bugs[i].Update(gameTime);
                 bugs[i].Target = target;
 
+                if (bugs.Count < 1 && bugs[i].BoundingBoxRect.Contains(bugs[i - 1].BoundingBoxRect))
+                    bugs[i].Velocity = new Vector2(0, 0);
+
                 if (bugs[i].BoundingBoxRect.Contains(ms.X, ms.Y) && ms.LeftButton == ButtonState.Pressed)
                 {
                     Random a = new Random();
                     int ai = a.Next(0, Window.ClientBounds.Height - 64);
-
-                    Random dirx = new Random();
-                    int dirxi = dirx.Next(50, 200);
-                    Random diry = new Random();
-                    int diryi = diry.Next(-60, 60);
 
                     SpawnBug(new Vector2(0, ai), new Vector2(dirxi, diryi));
                     SpawnBug(new Vector2(0, ai), new Vector2(dirxi, diryi));
@@ -211,11 +216,12 @@ namespace BugSmasher
 
                 MouseState ms = Mouse.GetState();
 
-                /*if (bugs[i].BoundingBoxRect.Contains(ms.X, ms.Y) && ms.LeftButton == ButtonState.Pressed)
-                    spriteBatchDraw(splat, bugs[i].Location, Color.White);*/
+                if (bugs[i].BoundingBoxRect.Contains(ms.X, ms.Y) && ms.LeftButton == ButtonState.Pressed)
+                    splat.Draw(spriteBatch);
             }
             selectionwindow.RelativeSize = 0.5f;
             selectionwindow.Draw(spriteBatch);
+            icecream.Draw(spriteBatch);
             hand.Draw(spriteBatch);
 
             spriteBatch.End();
