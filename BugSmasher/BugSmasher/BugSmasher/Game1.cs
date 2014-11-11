@@ -36,7 +36,7 @@ namespace BugSmasher
 
             graphics.PreferredBackBufferWidth = 1920;
             graphics.PreferredBackBufferHeight = 1024;
-            //graphics.IsFullScreen = true;
+            graphics.IsFullScreen = true;
         }
 
         /// <summary>
@@ -77,7 +77,9 @@ namespace BugSmasher
             hand = new Sprite(Vector2.Zero, spritesheet, new Rectangle(135, 197, 48, 52), Vector2.Zero);
             splat = new Sprite(splatloc, spritesheet, new Rectangle(0, 132, 128, 128), Vector2.Zero);
             selectionwindow = new Sprite(new Vector2(Window.ClientBounds.Width - 600, Window.ClientBounds.Height - 300), windows, new Rectangle(64, 41, 778, 377), Vector2.Zero);
-            icecream = new Sprite(selectionwindow.Center, spritesheet, new Rectangle(0, 259, 32, 37), Vector2.Zero);
+            icecream = new Sprite(new Vector2(selectionwindow.Center.X - 110, selectionwindow.Center.Y - 10), spritesheet, new Rectangle(0, 259, 32, 37), Vector2.Zero);
+            pizza = new Sprite(new Vector2(selectionwindow.Center.X - 20, selectionwindow.Center.Y - 10), spritesheet, new Rectangle(32, 259, 32, 37), Vector2.Zero);
+            milkshake = new Sprite(new Vector2(selectionwindow.Center.X + 70, selectionwindow.Center.Y - 10), spritesheet, new Rectangle(64, 259, 32, 37), Vector2.Zero);
             SpawnBug(new Vector2(0, ai), new Vector2(100, 0));
         }
 
@@ -150,30 +152,11 @@ namespace BugSmasher
                 Random diry = new Random();
                 int diryi = diry.Next(-60, 60);
 
-                if (!oldks.IsKeyDown(Keys.Space) && ks.IsKeyDown(Keys.Space) && snoopmode == false)
-                {
-                    snoopmode = true;
-                    bugs[i].TintColor = Color.LawnGreen;
-                    bugs[i].Velocity /= 2;
-                    hand.TintColor = Color.LawnGreen;
-                    snoopmusic = Content.Load<Song>("snoop-mode");
-                    MediaPlayer.Play(snoopmusic);
-                }
-                else if (!oldks.IsKeyDown(Keys.Space) && ks.IsKeyDown(Keys.Space) && snoopmode)
-                {
-                    snoopmode = false;
-                    bugs[i].TintColor = Color.White;
-                    bugs[i].Velocity *= 2;
-                    hand.TintColor = Color.White;
-                    music = Content.Load<Song>("music");
-                    MediaPlayer.Play(music);
-                }
-
                 bugs[i].Update(gameTime);
                 bugs[i].Target = target;
 
-                if (bugs.Count < 1 && bugs[i].BoundingBoxRect.Contains(bugs[i - 1].BoundingBoxRect))
-                    bugs[i].Velocity = new Vector2(0, 0);
+                //if (bugs.Count < 1 && bugs[i].BoundingBoxRect.Contains(bugs[i - 1].BoundingBoxRect))
+                //    bugs[i].Velocity = new Vector2(0, 0);
 
                 if (bugs[i].BoundingBoxRect.Contains(ms.X, ms.Y) && ms.LeftButton == ButtonState.Pressed)
                 {
@@ -207,8 +190,7 @@ namespace BugSmasher
 
             // TODO: Add your drawing code here
             spriteBatch.Begin();
-            if (snoopmode == false) spriteBatch.Draw(background, Vector2.Zero, Color.White);
-            else spriteBatch.Draw(snoopback, Vector2.Zero, Color.White);
+            spriteBatch.Draw(background, Vector2.Zero, Color.White);
 
             for (int i = 0; i < bugs.Count; i++)
             {
@@ -221,7 +203,12 @@ namespace BugSmasher
             }
             selectionwindow.RelativeSize = 0.5f;
             selectionwindow.Draw(spriteBatch);
+            icecream.RelativeSize = 3;
             icecream.Draw(spriteBatch);
+            pizza.RelativeSize = 3;
+            pizza.Draw(spriteBatch);
+            milkshake.RelativeSize = 3;
+            milkshake.Draw(spriteBatch);
             hand.Draw(spriteBatch);
 
             spriteBatch.End();
