@@ -22,12 +22,12 @@ namespace BugSmasher
         Sprite hand, splat, selectionwindow, icecream, pizza, milkshake;
         Rectangle rec;
         List<Bug> bugs = new List<Bug>();
-        Song music, snoopmusic;
+        Song music;
         KeyboardState oldks;
         Vector2 splatloc;
         int mood = 0; // 0 = normal, 1 = relaxed, 2 = angry, 3 = intrigued
         int gamestate = 0; // 0 = normal, 1 = paused, 2 = menu
-        bool snoopmode = false;
+        bool deadbug = false;
 
         public Game1()
         {
@@ -155,8 +155,8 @@ namespace BugSmasher
                 bugs[i].Update(gameTime);
                 bugs[i].Target = target;
 
-                //if (bugs.Count < 1 && bugs[i].BoundingBoxRect.Contains(bugs[i - 1].BoundingBoxRect))
-                //    bugs[i].Velocity = new Vector2(0, 0);
+                if (bugs.Count < 1 && bugs[i].BoundingBoxRect.Contains(bugs[i - 1].BoundingBoxRect))
+                    bugs[i].Velocity = new Vector2(0, 0);
 
                 if (bugs[i].BoundingBoxRect.Contains(ms.X, ms.Y) && ms.LeftButton == ButtonState.Pressed)
                 {
@@ -166,15 +166,11 @@ namespace BugSmasher
                     SpawnBug(new Vector2(0, ai), new Vector2(dirxi, diryi));
                     SpawnBug(new Vector2(0, ai), new Vector2(dirxi, diryi));
 
+                    splatloc = bugs[i].Center;
                     bugs.RemoveAt(i); // placeholder for splat code
+                    deadbug = true;
                     continue;
                 }
-
-                /*if (gameTime.IsRunningSlowly)
-                {
-                    if (bugs.Count > 1)
-                        bugs.RemoveAt(i);
-                }*/
             }
 
             base.Update(gameTime);
@@ -200,6 +196,8 @@ namespace BugSmasher
 
                 if (bugs[i].BoundingBoxRect.Contains(ms.X, ms.Y) && ms.LeftButton == ButtonState.Pressed)
                     splat.Draw(spriteBatch);
+
+                if (deadbug) splat.Draw(spriteBatch);
             }
             selectionwindow.RelativeSize = 0.5f;
             selectionwindow.Draw(spriteBatch);
