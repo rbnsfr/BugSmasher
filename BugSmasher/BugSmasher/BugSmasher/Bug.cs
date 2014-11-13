@@ -10,7 +10,7 @@ namespace BugSmasher
 {
     class Bug : Sprite
     {
-        public int mood; // 0 = normal, 1 = angry, 2 = intriguied, etc.
+        public int Mood; // 0 = normal, 1 = angry, 2 = intriguied, etc.
         public Vector2 Target;
 
         public Bug(

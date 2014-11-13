@@ -8,7 +8,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Eahscs\Documents\GitHub\BugSmasher\BugSmasher\BugSmasher\BugSmasher\bin\x86\Debug\Content\background.xnb</Output>
-      <Time>2014-11-12T07:22:39.0812-05:00</Time>
+      <Time>2014-11-13T07:21:46.8526-05:00</Time>
     </Item>
     <Item>
       <Source>buttons.png</Source>
@@ -17,7 +17,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Eahscs\Documents\GitHub\BugSmasher\BugSmasher\BugSmasher\BugSmasher\bin\x86\Debug\Content\buttons.xnb</Output>
-      <Time>2014-11-12T07:22:39.1312-05:00</Time>
+      <Time>2014-11-13T07:21:46.8996-05:00</Time>
     </Item>
     <Item>
       <Source>spritesheet.png</Source>
@@ -26,7 +26,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Eahscs\Documents\GitHub\BugSmasher\BugSmasher\BugSmasher\BugSmasher\bin\x86\Debug\Content\spritesheet.xnb</Output>
-      <Time>2014-11-12T07:22:39.2982-05:00</Time>
+      <Time>2014-11-13T07:21:47.0036-05:00</Time>
     </Item>
     <Item>
       <Source>windows.png</Source>
@@ -35,7 +35,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Eahscs\Documents\GitHub\BugSmasher\BugSmasher\BugSmasher\BugSmasher\bin\x86\Debug\Content\windows.xnb</Output>
-      <Time>2014-11-12T07:22:39.3022-05:00</Time>
+      <Time>2014-11-13T07:21:47.0086-05:00</Time>
     </Item>
     <Item>
       <Source>music.mp3</Source>
@@ -45,7 +45,7 @@
       <Options>None</Options>
       <Output>C:\Users\Eahscs\Documents\GitHub\BugSmasher\BugSmasher\BugSmasher\BugSmasher\bin\x86\Debug\Content\music.xnb</Output>
       <Extra>C:\Users\Eahscs\Documents\GitHub\BugSmasher\BugSmasher\BugSmasher\BugSmasher\bin\x86\Debug\Content\music.wma</Extra>
-      <Time>2014-11-12T07:22:39.1752-05:00</Time>
+      <Time>2014-11-13T07:21:46.9416-05:00</Time>
     </Item>
     <Item>
       <Source>background-mac.png</Source>
@@ -54,26 +54,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Eahscs\Documents\GitHub\BugSmasher\BugSmasher\BugSmasher\BugSmasher\bin\x86\Debug\Content\background-mac.xnb</Output>
-      <Time>2014-11-12T07:22:39.0012-05:00</Time>
-    </Item>
-    <Item>
-      <Source>background-snoop.png</Source>
-      <Name>background-snoop</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\EAHSCS\Documents\GitHub\BugSmasher\BugSmasher\BugSmasher\BugSmasher\bin\x86\Debug\Content\background-snoop.xnb</Output>
-      <Time>2014-11-12T07:22:39.0752-05:00</Time>
-    </Item>
-    <Item>
-      <Source>snoop-mode.mp3</Source>
-      <Name>snoop-mode</Name>
-      <Importer>Mp3Importer</Importer>
-      <Processor>SongProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\EAHSCS\Documents\GitHub\BugSmasher\BugSmasher\BugSmasher\BugSmasher\bin\x86\Debug\Content\snoop-mode.xnb</Output>
-      <Extra>C:\Users\EAHSCS\Documents\GitHub\BugSmasher\BugSmasher\BugSmasher\BugSmasher\bin\x86\Debug\Content\snoop-mode.wma</Extra>
-      <Time>2014-11-12T07:22:39.2952-05:00</Time>
+      <Time>2014-11-13T07:21:46.8046-05:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>

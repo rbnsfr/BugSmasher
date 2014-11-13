@@ -18,15 +18,13 @@ namespace BugSmasher
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
-        Texture2D spritesheet, windows, buttons, background, snoopback;
+        Texture2D spritesheet, windows, buttons, background;
         Sprite hand, splat, selectionwindow, icecream, pizza, milkshake;
         Rectangle rec;
         List<Bug> bugs = new List<Bug>();
         Song music;
-        KeyboardState oldks;
         Vector2 splatloc;
-        int mood = 0; // 0 = normal, 1 = relaxed, 2 = angry, 3 = intrigued
-        int gamestate = 0; // 0 = normal, 1 = paused, 2 = menu
+        int gameState = 0; // 0 = normal, 1 = paused, 2 = menu
         bool deadbug = false;
 
         public Game1()
@@ -67,7 +65,6 @@ namespace BugSmasher
             windows = Content.Load<Texture2D>("windows");
             buttons = Content.Load<Texture2D>("buttons");
             background = Content.Load<Texture2D>("background-mac");
-            snoopback = Content.Load<Texture2D>("background-snoop");
             music = Content.Load<Song>("music");
             MediaPlayer.Play(music);
 
@@ -119,6 +116,7 @@ namespace BugSmasher
             }
             Bug bug = new Bug(location, spritesheet, rec, velocity);
             bugs.Add(bug);
+            bugs.Add(bug);
         }
 
         /// <summary>
@@ -155,8 +153,12 @@ namespace BugSmasher
                 bugs[i].Update(gameTime);
                 bugs[i].Target = target;
 
-                if (bugs.Count < 1 && bugs[i].BoundingBoxRect.Contains(bugs[i - 1].BoundingBoxRect))
-                    bugs[i].Velocity = new Vector2(0, 0);
+                if (bugs[i].BoundingBoxRect.Intersects(pizza.BoundingBoxRect))
+                {
+                    pizza.Location = new Vector2(-300, -300);
+                    bugs[i].TintColor = Color.LightGreen;
+                    bugs[i].Velocity *= new Vector2(4, 4);
+                }
 
                 if (bugs[i].BoundingBoxRect.Contains(ms.X, ms.Y) && ms.LeftButton == ButtonState.Pressed)
                 {
@@ -164,14 +166,60 @@ namespace BugSmasher
                     int ai = a.Next(0, Window.ClientBounds.Height - 64);
 
                     SpawnBug(new Vector2(0, ai), new Vector2(dirxi, diryi));
-                    SpawnBug(new Vector2(0, ai), new Vector2(dirxi, diryi));
 
-                    splatloc = bugs[i].Center;
-                    bugs.RemoveAt(i); // placeholder for splat code
+                    splatloc = new Vector2(bugs[i].Location.X, bugs[i].Location.Y);
                     deadbug = true;
+                    bugs.RemoveAt(i); // placeholder for splat code
                     continue;
                 }
             }
+
+            if (gameTime.IsRunningSlowly)
+            {
+                for (int b = 20; b < bugs.Count; b++)
+                    bugs.RemoveAt(b);
+            }
+
+            if (hand.BoundingBoxRect.Intersects(icecream.BoundingBoxRect))
+            {
+                icecream.TintColor = Color.Yellow;
+                if (ms.LeftButton == ButtonState.Pressed)
+                {
+                    hand.Location = new Vector2(-300, -300);
+                    icecream.Location = new Vector2(ms.X, ms.Y);
+                }
+                icecream.RelativeSize = 0.5f;
+            }
+            else
+            {
+                icecream.TintColor = Color.White;
+                icecream.RelativeSize = 1;
+            }
+
+            if (hand.BoundingBoxRect.Intersects(milkshake.BoundingBoxRect))
+            {
+                milkshake.TintColor = Color.Yellow;
+                if (ms.LeftButton == ButtonState.Pressed)
+                {
+                    hand.Location = new Vector2(-300, -300);
+                    milkshake.Location = new Vector2(ms.X, ms.Y);
+                }
+            }
+            else milkshake.TintColor = Color.White;
+
+            if (hand.BoundingBoxRect.Intersects(pizza.BoundingBoxRect))
+            {
+                pizza.TintColor = Color.Yellow;
+                if (ms.LeftButton == ButtonState.Pressed)
+                {
+                    hand.Location = new Vector2(-300, -300);
+                    pizza.Location = new Vector2(ms.X, ms.Y);
+                }
+            }
+            else pizza.TintColor = Color.White;
+
+            if (!pizza.BoundingBoxRect.Intersects(selectionwindow.BoundingBoxRect) && !icecream.BoundingBoxRect.Intersects(selectionwindow.BoundingBoxRect)
+                && !milkshake.BoundingBoxRect.Intersects(selectionwindow.BoundingBoxRect)) selectionwindow.Location = new Vector2(-300, -300);
 
             base.Update(gameTime);
         }
@@ -186,8 +234,8 @@ namespace BugSmasher
 
             // TODO: Add your drawing code here
             spriteBatch.Begin();
-            spriteBatch.Draw(background, Vector2.Zero, Color.White);
 
+            spriteBatch.Draw(background, Vector2.Zero, Color.White);
             for (int i = 0; i < bugs.Count; i++)
             {
                 bugs[i].Draw(spriteBatch);
@@ -197,15 +245,16 @@ namespace BugSmasher
                 if (bugs[i].BoundingBoxRect.Contains(ms.X, ms.Y) && ms.LeftButton == ButtonState.Pressed)
                     splat.Draw(spriteBatch);
 
-                if (deadbug) splat.Draw(spriteBatch);
+                if (deadbug)
+                    splat.Draw(spriteBatch);
             }
-            selectionwindow.RelativeSize = 0.5f;
+            selectionwindow.RelativeSize = 0.4f;
             selectionwindow.Draw(spriteBatch);
-            icecream.RelativeSize = 3;
+            icecream.RelativeSize = 2;
             icecream.Draw(spriteBatch);
-            pizza.RelativeSize = 3;
+            pizza.RelativeSize = 2;
             pizza.Draw(spriteBatch);
-            milkshake.RelativeSize = 3;
+            milkshake.RelativeSize = 2;
             milkshake.Draw(spriteBatch);
             hand.Draw(spriteBatch);
 
