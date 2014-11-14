@@ -65,7 +65,7 @@ namespace BugSmasher
             windows = Content.Load<Texture2D>("windows");
             buttons = Content.Load<Texture2D>("buttons");
             background = Content.Load<Texture2D>("background-mac");
-            music = Content.Load<Song>("music");
+            music = Content.Load<Song>("music-default");
             MediaPlayer.Play(music);
 
             Random a = new Random();
@@ -115,7 +115,6 @@ namespace BugSmasher
                     break;
             }
             Bug bug = new Bug(location, spritesheet, rec, velocity);
-            bugs.Add(bug);
             bugs.Add(bug);
         }
 
