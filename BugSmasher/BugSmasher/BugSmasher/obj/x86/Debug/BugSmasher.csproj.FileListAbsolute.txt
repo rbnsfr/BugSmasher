@@ -28,6 +28,12 @@ C:\Users\Eahscs\Documents\GitHub\BugSmasher\BugSmasher\BugSmasher\BugSmasher\obj
 C:\Users\Eahscs\Documents\GitHub\BugSmasher\BugSmasher\BugSmasher\BugSmasher\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
 C:\Users\Eahscs\Documents\GitHub\BugSmasher\BugSmasher\BugSmasher\BugSmasher\obj\x86\Debug\BugSmasher.exe
 C:\Users\Eahscs\Documents\GitHub\BugSmasher\BugSmasher\BugSmasher\BugSmasher\obj\x86\Debug\BugSmasher.pdb
-C:\Users\Eahscs\Documents\GitHub\BugSmasher\BugSmasher\BugSmasher\BugSmasher\bin\x86\Debug\Content\music.xnb
-C:\Users\Eahscs\Documents\GitHub\BugSmasher\BugSmasher\BugSmasher\BugSmasher\bin\x86\Debug\Content\music.wma
 C:\Users\Eahscs\Documents\GitHub\BugSmasher\BugSmasher\BugSmasher\BugSmasher\bin\x86\Debug\Content\background-mac.xnb
+C:\Users\EAHSCS\Documents\GitHub\BugSmasher\BugSmasher\BugSmasher\BugSmasher\bin\x86\Debug\Content\music-default.xnb
+C:\Users\EAHSCS\Documents\GitHub\BugSmasher\BugSmasher\BugSmasher\BugSmasher\bin\x86\Debug\Content\music-mdas.xnb
+C:\Users\EAHSCS\Documents\GitHub\BugSmasher\BugSmasher\BugSmasher\BugSmasher\bin\x86\Debug\Content\music-mdasmix.xnb
+C:\Users\EAHSCS\Documents\GitHub\BugSmasher\BugSmasher\BugSmasher\BugSmasher\bin\x86\Debug\Content\music-supersledge.xnb
+C:\Users\EAHSCS\Documents\GitHub\BugSmasher\BugSmasher\BugSmasher\BugSmasher\bin\x86\Debug\Content\music-default.wma
+C:\Users\EAHSCS\Documents\GitHub\BugSmasher\BugSmasher\BugSmasher\BugSmasher\bin\x86\Debug\Content\music-mdas.wma
+C:\Users\EAHSCS\Documents\GitHub\BugSmasher\BugSmasher\BugSmasher\BugSmasher\bin\x86\Debug\Content\music-mdasmix.wma
+C:\Users\EAHSCS\Documents\GitHub\BugSmasher\BugSmasher\BugSmasher\BugSmasher\bin\x86\Debug\Content\music-supersledge.wma

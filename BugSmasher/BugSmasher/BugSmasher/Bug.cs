@@ -29,7 +29,7 @@ namespace BugSmasher
             {
                 Vector2 vel = Target - Center;
                 vel.Normalize();
-                vel *= 100;
+                vel *= 200;
                 Velocity = vel;
                 Rotation = (float)Math.Atan2(vel.Y, vel.X);
             }

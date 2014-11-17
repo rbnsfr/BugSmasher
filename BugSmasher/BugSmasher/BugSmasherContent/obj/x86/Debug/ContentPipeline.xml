@@ -8,7 +8,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Eahscs\Documents\GitHub\BugSmasher\BugSmasher\BugSmasher\BugSmasher\bin\x86\Debug\Content\background.xnb</Output>
-      <Time>2014-11-13T07:21:46.8526-05:00</Time>
+      <Time>2014-11-17T07:25:18.3428-05:00</Time>
     </Item>
     <Item>
       <Source>buttons.png</Source>
@@ -17,7 +17,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Eahscs\Documents\GitHub\BugSmasher\BugSmasher\BugSmasher\BugSmasher\bin\x86\Debug\Content\buttons.xnb</Output>
-      <Time>2014-11-13T07:21:46.8996-05:00</Time>
+      <Time>2014-11-17T07:25:18.3918-05:00</Time>
     </Item>
     <Item>
       <Source>spritesheet.png</Source>
@@ -26,7 +26,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Eahscs\Documents\GitHub\BugSmasher\BugSmasher\BugSmasher\BugSmasher\bin\x86\Debug\Content\spritesheet.xnb</Output>
-      <Time>2014-11-13T07:21:47.0036-05:00</Time>
+      <Time>2014-11-17T07:25:18.6148-05:00</Time>
     </Item>
     <Item>
       <Source>windows.png</Source>
@@ -35,17 +35,7 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Eahscs\Documents\GitHub\BugSmasher\BugSmasher\BugSmasher\BugSmasher\bin\x86\Debug\Content\windows.xnb</Output>
-      <Time>2014-11-13T07:21:47.0086-05:00</Time>
-    </Item>
-    <Item>
-      <Source>music.mp3</Source>
-      <Name>music</Name>
-      <Importer>Mp3Importer</Importer>
-      <Processor>SongProcessor</Processor>
-      <Options>None</Options>
-      <Output>C:\Users\Eahscs\Documents\GitHub\BugSmasher\BugSmasher\BugSmasher\BugSmasher\bin\x86\Debug\Content\music.xnb</Output>
-      <Extra>C:\Users\Eahscs\Documents\GitHub\BugSmasher\BugSmasher\BugSmasher\BugSmasher\bin\x86\Debug\Content\music.wma</Extra>
-      <Time>2014-11-13T07:21:46.9416-05:00</Time>
+      <Time>2014-11-17T07:25:18.6208-05:00</Time>
     </Item>
     <Item>
       <Source>background-mac.png</Source>
@@ -54,7 +44,47 @@
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Eahscs\Documents\GitHub\BugSmasher\BugSmasher\BugSmasher\BugSmasher\bin\x86\Debug\Content\background-mac.xnb</Output>
-      <Time>2014-11-13T07:21:46.8046-05:00</Time>
+      <Time>2014-11-17T07:25:18.3298-05:00</Time>
+    </Item>
+    <Item>
+      <Source>music-default.mp3</Source>
+      <Name>music-default</Name>
+      <Importer>Mp3Importer</Importer>
+      <Processor>SongProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\EAHSCS\Documents\GitHub\BugSmasher\BugSmasher\BugSmasher\BugSmasher\bin\x86\Debug\Content\music-default.xnb</Output>
+      <Extra>C:\Users\EAHSCS\Documents\GitHub\BugSmasher\BugSmasher\BugSmasher\BugSmasher\bin\x86\Debug\Content\music-default.wma</Extra>
+      <Time>2014-11-17T07:25:18.4358-05:00</Time>
+    </Item>
+    <Item>
+      <Source>music-mdas.mp3</Source>
+      <Name>music-mdas</Name>
+      <Importer>Mp3Importer</Importer>
+      <Processor>SongProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\EAHSCS\Documents\GitHub\BugSmasher\BugSmasher\BugSmasher\BugSmasher\bin\x86\Debug\Content\music-mdas.xnb</Output>
+      <Extra>C:\Users\EAHSCS\Documents\GitHub\BugSmasher\BugSmasher\BugSmasher\BugSmasher\bin\x86\Debug\Content\music-mdas.wma</Extra>
+      <Time>2014-11-17T07:25:18.4848-05:00</Time>
+    </Item>
+    <Item>
+      <Source>music-mdasmix.mp3</Source>
+      <Name>music-mdasmix</Name>
+      <Importer>Mp3Importer</Importer>
+      <Processor>SongProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\EAHSCS\Documents\GitHub\BugSmasher\BugSmasher\BugSmasher\BugSmasher\bin\x86\Debug\Content\music-mdasmix.xnb</Output>
+      <Extra>C:\Users\EAHSCS\Documents\GitHub\BugSmasher\BugSmasher\BugSmasher\BugSmasher\bin\x86\Debug\Content\music-mdasmix.wma</Extra>
+      <Time>2014-11-17T07:25:18.5268-05:00</Time>
+    </Item>
+    <Item>
+      <Source>music-supersledge.mp3</Source>
+      <Name>music-supersledge</Name>
+      <Importer>Mp3Importer</Importer>
+      <Processor>SongProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\EAHSCS\Documents\GitHub\BugSmasher\BugSmasher\BugSmasher\BugSmasher\bin\x86\Debug\Content\music-supersledge.xnb</Output>
+      <Extra>C:\Users\EAHSCS\Documents\GitHub\BugSmasher\BugSmasher\BugSmasher\BugSmasher\bin\x86\Debug\Content\music-supersledge.wma</Extra>
+      <Time>2014-11-17T07:25:18.5988-05:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
@@ -62,10 +92,10 @@
       <TargetProfile>HiDef</TargetProfile>
       <BuildConfiguration>Debug</BuildConfiguration>
       <CompressContent>false</CompressContent>
-      <RootDirectory>C:\Users\eahscs\Documents\GitHub\BugSmasher\BugSmasher\BugSmasher\BugSmasherContent\</RootDirectory>
-      <LoggerRootDirectory>C:\Users\eahscs\Documents\GitHub\BugSmasher\BugSmasher\BugSmasher\BugSmasher\</LoggerRootDirectory>
-      <IntermediateDirectory>C:\Users\eahscs\Documents\GitHub\BugSmasher\BugSmasher\BugSmasher\BugSmasherContent\obj\x86\Debug\</IntermediateDirectory>
-      <OutputDirectory>C:\Users\eahscs\Documents\GitHub\BugSmasher\BugSmasher\BugSmasher\BugSmasher\bin\x86\Debug\Content\</OutputDirectory>
+      <RootDirectory>C:\Users\EAHSCS\Documents\GitHub\BugSmasher\BugSmasher\BugSmasher\BugSmasherContent\</RootDirectory>
+      <LoggerRootDirectory>C:\Users\EAHSCS\Documents\GitHub\BugSmasher\BugSmasher\BugSmasher\BugSmasher\</LoggerRootDirectory>
+      <IntermediateDirectory>C:\Users\EAHSCS\Documents\GitHub\BugSmasher\BugSmasher\BugSmasher\BugSmasherContent\obj\x86\Debug\</IntermediateDirectory>
+      <OutputDirectory>C:\Users\EAHSCS\Documents\GitHub\BugSmasher\BugSmasher\BugSmasher\BugSmasher\bin\x86\Debug\Content\</OutputDirectory>
     </Settings>
     <Assemblies>
       <Assembly>

@@ -26,6 +26,7 @@ namespace BugSmasher
         Vector2 splatloc;
         int gameState = 0; // 0 = normal, 1 = paused, 2 = menu
         bool deadbug = false;
+        Random a = new Random();
 
         public Game1()
         {
@@ -34,7 +35,7 @@ namespace BugSmasher
 
             graphics.PreferredBackBufferWidth = 1920;
             graphics.PreferredBackBufferHeight = 1024;
-            graphics.IsFullScreen = true;
+            graphics.IsFullScreen = false;
         }
 
         /// <summary>
@@ -68,16 +69,14 @@ namespace BugSmasher
             music = Content.Load<Song>("music-default");
             MediaPlayer.Play(music);
 
-            Random a = new Random();
-            int ai = a.Next(0, this.Window.ClientBounds.Height - 64);
-
             hand = new Sprite(Vector2.Zero, spritesheet, new Rectangle(135, 197, 48, 52), Vector2.Zero);
             splat = new Sprite(splatloc, spritesheet, new Rectangle(0, 132, 128, 128), Vector2.Zero);
             selectionwindow = new Sprite(new Vector2(Window.ClientBounds.Width - 600, Window.ClientBounds.Height - 300), windows, new Rectangle(64, 41, 778, 377), Vector2.Zero);
             icecream = new Sprite(new Vector2(selectionwindow.Center.X - 110, selectionwindow.Center.Y - 10), spritesheet, new Rectangle(0, 259, 32, 37), Vector2.Zero);
             pizza = new Sprite(new Vector2(selectionwindow.Center.X - 20, selectionwindow.Center.Y - 10), spritesheet, new Rectangle(32, 259, 32, 37), Vector2.Zero);
             milkshake = new Sprite(new Vector2(selectionwindow.Center.X + 70, selectionwindow.Center.Y - 10), spritesheet, new Rectangle(64, 259, 32, 37), Vector2.Zero);
-            SpawnBug(new Vector2(0, ai), new Vector2(100, 0));
+            int ai = a.Next(0, this.Window.ClientBounds.Height - 64);
+            SpawnBug(new Vector2(0, ai), new Vector2(200, 0));
         }
 
         /// <summary>
@@ -91,9 +90,9 @@ namespace BugSmasher
 
         public void SpawnBug(Vector2 location, Vector2 velocity)
         {
-            Random tokyo = new Random();
-            int tokyoi = tokyo.Next(0, 6);
-            switch (tokyoi)
+            Random typeOfBug = new Random();
+            int typeOfBugInt = typeOfBug.Next(0, 6);
+            switch (typeOfBugInt)
             {
                 case 0:
                     rec = new Rectangle(0, 0, 64, 64);
@@ -161,10 +160,11 @@ namespace BugSmasher
 
                 if (bugs[i].BoundingBoxRect.Contains(ms.X, ms.Y) && ms.LeftButton == ButtonState.Pressed)
                 {
-                    Random a = new Random();
                     int ai = a.Next(0, Window.ClientBounds.Height - 64);
+                    int bi = a.Next(0, Window.ClientBounds.Height - 64);
 
                     SpawnBug(new Vector2(0, ai), new Vector2(dirxi, diryi));
+                    if (bi != ai) SpawnBug(new Vector2(0, bi), new Vector2(dirxi, diryi));
 
                     splatloc = new Vector2(bugs[i].Location.X, bugs[i].Location.Y);
                     deadbug = true;

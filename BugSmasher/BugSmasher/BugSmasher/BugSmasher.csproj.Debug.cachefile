@@ -2,6 +2,12 @@ Content\background.xnb
 Content\buttons.xnb
 Content\spritesheet.xnb
 Content\windows.xnb
-Content\music.xnb
 Content\background-mac.xnb
-Content\music.wma
+Content\music-default.xnb
+Content\music-mdas.xnb
+Content\music-mdasmix.xnb
+Content\music-supersledge.xnb
+Content\music-default.wma
+Content\music-mdas.wma
+Content\music-mdasmix.wma
+Content\music-supersledge.wma
